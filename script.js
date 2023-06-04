@@ -1,27 +1,27 @@
 
 function b1clicked() {
     document.body.style.background = "red"; 
-    document.getElementById("showcolor").innerHTML = "the color of this is: red"
+    document.getElementById("showcolor").innerHTML = "the color of this page is: red"
 }
 
 function b2clicked() {
     document.body.style.background = "orange";
-    document.getElementById("showcolor").innerHTML = "the color of this is: orange" 
+    document.getElementById("showcolor").innerHTML = "the color of this page is: orange" 
 }
 
 function b3clicked() {
     document.body.style.background = "yellow";
-    document.getElementById("showcolor").innerHTML = "the color of this is: yellow" 
+    document.getElementById("showcolor").innerHTML = "the color of this page is: yellow" 
 }
 
 function b4clicked() {
     document.body.style.background = "greenyellow";
-    document.getElementById("showcolor").innerHTML = "the color of this is: green/yellow" 
+    document.getElementById("showcolor").innerHTML = "the color of this page is: green/yellow" 
 }
 
 function b5clicked() {
     document.body.style.background = "turquoise";
-    document.getElementById("showcolor").innerHTML = "the color of this is: turquoise" 
+    document.getElementById("showcolor").innerHTML = "the color of this page is: turquoise" 
 }
 
 function submitted() {
@@ -36,4 +36,11 @@ function add() {
     const ans = parseInt(num1.value) + parseInt(num2.value);
     const sumans = document.getElementById("answer"); 
     sumans.innerText = `the sum is: ${ans}`; 
+}
+
+function formSubmit(form) {
+    alert(form.fname.value); 
+    alert(form.lname.value);
+    alert(form.pass.value);
+    return false; 
 }
