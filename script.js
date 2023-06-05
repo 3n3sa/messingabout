@@ -44,3 +44,37 @@ function formSubmit(form) {
     alert(form.pass.value);
     return false; 
 }
+
+const totalpriceelement = document.getElementById("totalprice");
+const parentlistelement = document.getElementById("list"); 
+let totalprice = 0; 
+
+
+function additem(form) {
+    const itemname = form.itemname.value; 
+    const itemprice = form.itemprice.value;
+
+    totalprice += parseInt(itemprice); 
+    totalpriceelement.innerHTML = `total price: £${totalprice}`; 
+    
+    const listelement = document.createElement("li"); 
+    const textnode = document.createTextNode(`${itemname} - ${itemprice}`); 
+
+    listelement.appendChild(textnode); 
+    parentlistelement.appendChild(listelement); 
+    listelement.classList.add("list-group-item", "d-flex", "justify-content-between"); 
+
+    const deletebutton = document.createElement("button"); 
+    const deletetextnode = document.createTextNode("delete"); 
+    deletebutton.appendChild(deletetextnode); 
+    deletebutton.classList.add("btn", "btn-danger"); 
+    listelement.appendChild(deletebutton); 
+
+    deletebutton.addEventListener("click", () => { // short way of doing a function 
+        listelement.remove(); // removing from the list 
+        totalprice -= parseInt(itemprice); // taking it away from the total price 
+        totalpriceelement.innerText = `total price: £${totalprice}`; // changing the total price 
+    })
+
+    return false; 
+}
