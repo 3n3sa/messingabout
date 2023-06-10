@@ -93,7 +93,7 @@ function addtodo(form) {
 
     const deletetodo = document.createElement("button");
     deletetodo.textContent = "delete";
-    deletetodo.classList.add("btn", "btn-danger", "ms-auto");
+    deletetodo.classList.add("btn", "btn-outline-danger", "ms-auto");
     deletetodo.style.marginLeft = "auto"; // Align button to the right
     todolistinfo.appendChild(deletetodo);
 
@@ -103,7 +103,7 @@ function addtodo(form) {
 
     const completetodo = document.createElement("button");
     completetodo.textContent = "completed";
-    completetodo.classList.add("btn", "btn-success", "ms-2");
+    completetodo.classList.add("btn", "btn-outline-success", "ms-2");
     completetodo.style.marginLeft = "auto";
     todolistinfo.appendChild(completetodo);
 
