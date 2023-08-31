@@ -48,33 +48,53 @@ function formSubmit(form) {
 const totalpriceelement = document.getElementById("totalprice");
 const parentlistelement = document.getElementById("list"); 
 let totalprice = 0; 
+let cart = []; 
 
+// representing each item in the cart 
+class Item { 
+    constructor(name, price) {
+        this.name = name; 
+        this.price = price; 
+    }
+}
+
+// redraw ui when state is updated 
+function refreshUI() {
+    totalpriceelement.innerHTML = `total price: £${totalprice}`; 
+    parentlistelement.innerHTML = " "; 
+    console.log(cart)
+
+    cart.forEach((item, index) => {
+        const listelement = document.createElement("li"); 
+        const textnode = document.createTextNode(`${item.name} - ${item.price}`); 
+
+        listelement.appendChild(textnode); 
+        parentlistelement.appendChild(listelement); 
+        listelement.classList.add("list-group-item", "d-flex", "justify-content-between"); 
+
+        const deletebutton = document.createElement("button"); 
+        const deletetextnode = document.createTextNode("delete"); 
+        deletebutton.appendChild(deletetextnode); 
+        deletebutton.classList.add("btn", "btn-danger"); 
+        listelement.appendChild(deletebutton); 
+
+        deletebutton.addEventListener("click", () => { // short way of doing a function 
+            cart.splice(index, 1) // removing from the list 
+            totalprice -= item.price; // taking it away from the total price 
+            refreshUI(); 
+        });
+    }) 
+}
 
 function additem(form) {
     const itemname = form.itemname.value; 
     const itemprice = form.itemprice.value;
 
-    totalprice += parseInt(itemprice); 
-    totalpriceelement.innerHTML = `total price: £${totalprice}`; 
+    totalprice += parseInt(itemprice);
+    const item = new Item(itemname, parseInt(itemprice))
+    cart.push(item) 
     
-    const listelement = document.createElement("li"); 
-    const textnode = document.createTextNode(`${itemname} - ${itemprice}`); 
-
-    listelement.appendChild(textnode); 
-    parentlistelement.appendChild(listelement); 
-    listelement.classList.add("list-group-item", "d-flex", "justify-content-between"); 
-
-    const deletebutton = document.createElement("button"); 
-    const deletetextnode = document.createTextNode("delete"); 
-    deletebutton.appendChild(deletetextnode); 
-    deletebutton.classList.add("btn", "btn-danger"); 
-    listelement.appendChild(deletebutton); 
-
-    deletebutton.addEventListener("click", () => { // short way of doing a function 
-        listelement.remove(); // removing from the list 
-        totalprice -= parseInt(itemprice); // taking it away from the total price 
-        totalpriceelement.innerText = `total price: £${totalprice}`; // changing the total price 
-    })
+    refreshUI(); // call refreshUI because the state of the application has change 
 
     return false; 
 }
