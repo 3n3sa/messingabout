@@ -1,0 +1,24 @@
+ RANDOM QUICK NOTES FOR PROGRAMMING 
+
+--------------------------------------------------------------------------------------------------------------------------
+ 
+CRUD: CREATE - READ - UPDATE - DELETE 
+
+= 4 basic operations of persistent storage 
+ - create content for rest of world to see 
+ - read is for browsing and searching for content 
+ - updating is when users can make changes to their content 
+ - deleting content
+
+ crud is used to interact with a database and make it seamless for the user experience and make it super easy for anyone to create and share content. 
+ 
+ --------------------------------------------------------------------------------------------------------------------------
+
+APIs AND RESTFUL APIs 
+
+APPLICATION - PROGRAMMING - INTERFACE 
+- allows one software to talk to another (e.g. client to server typically)
+
+client being the user 
+server being the database 
+
